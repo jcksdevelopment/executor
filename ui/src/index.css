@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: "Segoe UI", system-ui, sans-serif;
+    --font-mono: "Cascadia Mono", Consolas, ui-monospace, monospace;
+
+    --color-bg: #0e0e0f;
+    --color-panel: #151516;
+    --color-input: #1b1b1d;
+    --color-hover: #232326;
+    --color-border: #2c2c30;
+    --color-muted: #6e6e75;
+    --color-dim: #9a9aa1;
+    --color-fg: #d6d6da;
+    --color-white: #f4f4f5;
+}
+
+@layer base {
+    html, body, #root {
+        height: 100%;
+        background: transparent;
+    }
+
+    body {
+        margin: 0;
+        overflow: hidden;
+        color: var(--color-fg);
+        font-family: var(--font-sans);
+        font-size: 13px;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    button, input, select, textarea {
+        font: inherit;
+        color: inherit;
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    :focus-visible {
+        outline: 1px solid var(--color-dim);
+        outline-offset: 1px;
+    }
+
+    ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--color-border);
+        border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+}
+
+@layer components {
+    .input {
+        @apply h-8 rounded border border-border bg-input px-2.5 text-white outline-none placeholder:text-muted focus:border-muted;
+    }
+
+    .button {
+        @apply h-8 rounded border border-border bg-input px-3 text-fg hover:bg-hover hover:text-white disabled:cursor-default disabled:opacity-40;
+    }
+
+    .button-primary {
+        @apply h-8 rounded bg-white px-4 font-semibold text-bg hover:bg-fg disabled:cursor-default disabled:opacity-40;
+    }
+
+    .link {
+        @apply text-dim hover:text-white;
+    }
+}
